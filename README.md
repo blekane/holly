@@ -1,1 +1,3 @@
-# holly
+# maven-project
+
+Simple Maven Project
