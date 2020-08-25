@@ -5,12 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-                
-            }
-        } 
+       
         stage('build') {
             steps {
                 echo 'Hello Build'
@@ -20,20 +15,24 @@ pipeline {
             }
         }
         
-         stage('deploy') {
+         stage('test') {
             steps {
-                echo 'Hello Deploy'
+                sh 'mvn test'
                 
             }
         }
         
-        
-       stage('test') {
-            steps {
-                echo 'Hello Test'
-                
-            }
-        }  
+      stage ('build and publish image') {
+      steps {
+        script { 
+    checkout scm
+    docker.withRegistry{'', 'dockerUserID') {   
+    def customImage = docker.build("bertinlekane/holly-pipeline:${env.BUILD_ID}")
+    customImage.push()
+    }
+
+    
+}  
         
     }
 }
