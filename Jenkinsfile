@@ -31,9 +31,14 @@ pipeline {
     customImage.push()
     }
 
-    
-}  
+  
+  } 
+
+  }
+     
+}
         
-    }
+ }
+    
 }
 
