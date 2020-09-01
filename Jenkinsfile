@@ -22,23 +22,25 @@ pipeline {
             }
         }
         
-      stage ('build and publish image') {
+        stage ('build and publish image') {
       steps {
         script { 
-    checkout scm
-    docker.withRegistry('', ' dockerUserID') {   
-    def customImage = docker.build("bertinlekane/holly-pipeline:${env.BUILD_ID}")
-    customImage.push()
+          checkout scm
+          docker.withRegistry('', ' DockerUserID') {   
+          def customImage = docker.build("bertinlekane/holly-pipeline:${env.BUILD_ID}")
+          def customImage1 = docker.build("bertinlekane/holly-pipeline")
+          customImage.push()
+          customImage1.push()
+          }
     }
 
   
-  } 
+    } 
 
-  }
+}         
      
-}
-        
- }
+ } 
+  
     
 }
 
