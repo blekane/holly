@@ -57,7 +57,7 @@ pipeline {
 }         
       stage ('deployment trigger' ){
           steps {
-              build 'holly-CI'
+              build 'holly-CD'
           }
       }             
                               
