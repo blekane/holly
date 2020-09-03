@@ -1,10 +1,17 @@
 pipeline {
     agent any
+    triggers {
+  pollSCM '* * * * *'
+}
+
+
+
+
     tools {
         maven 'M2_HOME'
     }
-    triggers {
-  pollSCM '* * * * *'
+      
+    
 }
 
 
@@ -33,7 +40,7 @@ pipeline {
       steps {
         script { 
           checkout scm
-          docker.withRegistry('', ' DockerUserID') {   
+          docker.withRegistry('', ' DockerRegistryID') {   
           def customImage = docker.build("bertinlekane/holly-pipeline:${env.BUILD_ID}")
           def customImage1 = docker.build("bertinlekane/holly-pipeline")
           customImage.push()
@@ -45,8 +52,16 @@ pipeline {
     } 
 
 }         
-     
- } 
+      stage ('deployment trigger' ){
+          steps {
+              build 'holly-CI'
+          }
+      }             
+                              
+                                               
+            
+          }
+
     
 }
 
