@@ -1,29 +1,18 @@
 pipeline {
     agent any
+       }
     triggers {
   pollSCM '* * * * *'
 }
 
-
-
-
-    tools {
+    
+        tools {
         maven 'M2_HOME'
     }
-      
-    
-}
-
-       
-    
-
-
-
-
-
+   
     stages {
        
-        stage('build') {
+      stage('build') {
             steps {
                 echo 'Hello Build'
                 sh 'mvn clean'
@@ -48,21 +37,20 @@ pipeline {
           def customImage1 = docker.build("bertinlekane/holly-pipeline")
           customImage.push()
           customImage1.push()
-          }
+              
+}
     }
 
   
     } 
 
 }         
-      stage ('deployment trigger' ){
-          steps {
-              build 'holly-CD'
- }                
- }             
-                              
-  }
 
+        stage ('deployment trigger'){
+        steps {
+            build 'holly-CD'
+} 
     
-
-
+}
+  }
+}
