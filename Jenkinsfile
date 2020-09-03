@@ -37,18 +37,16 @@ pipeline {
           customImage.push()
           customImage1.push()
               
-}
-    }
+}    
 
-    } 
-
+  } 
+  }
 }         
-
         stage ('deployment trigger'){
         steps {
             build 'holly-CD'
 } 
-    
-}
+}    
   }
+}
 
