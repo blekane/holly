@@ -4,8 +4,11 @@ pipeline {
         maven 'M2_HOME'
     }
     triggers {
-       cron('H/1 * * * * *')
-    }
+  pollSCM '* * * * *'
+}
+
+       
+    
 
 
 
