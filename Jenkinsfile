@@ -58,12 +58,10 @@ pipeline {
       stage ('deployment trigger' ){
           steps {
               build 'holly-CD'
-          }
-      }             
+ }                
+ }             
                               
-                                               
-            
-          }
+  }
 
     
 }
