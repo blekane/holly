@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>holiday</artifactId>
-  <packaging>war</packaging>
+  <packaging>holiday.war</packaging>
   <name>holiday</name>
   <description>holiday.</description>
 
